@@ -1,6 +1,7 @@
 package codeOfProgram.actions;
 
 import codeOfProgram.main.Card;
+import codeOfProgram.main.Configurations;
 
 import java.util.List;
 
@@ -11,12 +12,9 @@ public class CountResultDuringTheGame {
     int idTakenCard;
     Card tempTakenCard;
 
-    public static int getCountOfTakenCards() {
-        return countOfTakenCards;
-    }
     public static int getCountOfPoints() {
         return countOfPoints;
-    }
+    } //should be static
 
     public List playingTheGame(List deckOfCards) {
         idTakenCard = actionWithDeck.takeCard(deckOfCards);
@@ -25,7 +23,7 @@ public class CountResultDuringTheGame {
         countOfPoints += tempTakenCard.getValue();
         actionWithDeck.deleteTakenCardFromDeck(deckOfCards, idTakenCard);
         countOfTakenCards++;
-        System.out.println(countOfPoints+" points/"+countOfTakenCards+" card(-s) were taken");
+        System.out.println(String.format(Configurations.getCounterResultDuringTheGame(), countOfPoints, countOfTakenCards));
 
         return deckOfCards;
     }

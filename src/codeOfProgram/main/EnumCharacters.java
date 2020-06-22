@@ -6,7 +6,6 @@ public enum EnumCharacters {
 
     int value;
 
-
     EnumCharacters(int value){
         this.value = value;
     }

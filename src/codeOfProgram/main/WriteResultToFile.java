@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 public class WriteResultToFile {
     public void saveResult(String name, String result) {
         try (FileWriter fileWriter = new FileWriter(Configurations.getPathToSaveFile(), true)) {
-            fileWriter.write(name + ", result:" + result);
+            fileWriter.write(String.format(Configurations.getFinalResult(),name, result));
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern(Configurations.getDateFormat());
             LocalDateTime now = LocalDateTime.now();
             fileWriter.write(dtf.format(now));

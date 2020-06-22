@@ -4,6 +4,7 @@ public class Card {
     private int value;
     private EnumSuits suit;
     private EnumCharacters character;
+    private static final String PRINT_CARD_TEXT = "%s %s";
 
     public int getValue() {
         return value;
@@ -25,7 +26,7 @@ public class Card {
 //    public Card(){}
 
     public String printCard() {
-        return (character.toString() + " " + suit);
+        return (String.format(PRINT_CARD_TEXT, character.toString(), suit.specSuit));
     }
 }
 

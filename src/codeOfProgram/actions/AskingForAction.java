@@ -1,5 +1,6 @@
 package codeOfProgram.actions;
 
+import codeOfProgram.main.Configurations;
 import codeOfProgram.main.DeckOfCards;
 import codeOfProgram.main.WriteResultToFile;
 
@@ -10,28 +11,27 @@ public class AskingForAction {
     private static String nickName;
     public static String getNickName() {
         return nickName;
-    }
+    }  //should be static
 
     public List askingForStartGame (){
         WriteResultToFile writeResultToFile = new WriteResultToFile();
-        System.out.print("Do you wanna play?(1 - yes, 2 - no)");
+        System.out.print(Configurations.getAskForStartGame());
         Scanner scanner = new Scanner(System.in);
         String tempVarOfStartGame = scanner.next();
 
         while (true) {
-            if (tempVarOfStartGame.equalsIgnoreCase("1")) {
-                System.out.print("Enter your nick/name:");
+            if (tempVarOfStartGame.equals(Configurations.getPositiveAnswer())) {
+                System.out.print(Configurations.getAskForEnterName());
                 nickName = scanner.next();
                 List deckOfCards = new DeckOfCards().getDeckOfCards();
                 new CountResultDuringTheGame().playingTheGame(deckOfCards);
                 return deckOfCards;
-            } else if (tempVarOfStartGame.equals("2")) {
-                String loser = "loser";
-                System.out.print(loser);
-                writeResultToFile.saveResult("nickName", loser);
+            } else if (tempVarOfStartGame.equals(Configurations.getNegativeAnswer())) {
+                System.out.print(Configurations.getLoser());
+                writeResultToFile.saveResult(Configurations.getLoser(),Configurations.getLoser());
                 System.exit(0);
             } else {
-                System.out.print("You've entered wrong value. Try again");
+                System.out.print(Configurations.getWrongAnswer());
                 tempVarOfStartGame = scanner.next();
             }
             return null;
@@ -39,20 +39,18 @@ public class AskingForAction {
     }
 
     public List askingForTakingCard (List deckOfCards){
-        System.out.println("Do you wanna take one more card?(1 - yes, 2 - no)");
+        System.out.println(Configurations.getAskForTakingOneMoreCard());
         Scanner scanner = new Scanner(System.in);
-//        CountResultDuringTheGame countResultDuringTheGame = new CountResultDuringTheGame();
         String tempVarOfTakingCard = scanner.next();
-//        ResultGameContinuing resultGameContinuing = new ResultGameContinuing();
         while (true) {
-            if (tempVarOfTakingCard.equalsIgnoreCase("1")) {
+            if (tempVarOfTakingCard.equals(Configurations.getPositiveAnswer())) {
                 new CountResultDuringTheGame().playingTheGame(deckOfCards);
                 new ResultGameContinuing().countResultGame(CountResultDuringTheGame.getCountOfPoints());
                 return deckOfCards;
-            } else if (tempVarOfTakingCard.equals("2")) {
+            } else if (tempVarOfTakingCard.equals(Configurations.getNegativeAnswer())) {
                 new ResultGameFinishing().countResultGame(CountResultDuringTheGame.getCountOfPoints());
             } else {
-                System.out.println("You've entered wrong value. Try again");
+                System.out.println(Configurations.getWrongAnswer());
                 tempVarOfTakingCard = scanner.next();
             }
         }
