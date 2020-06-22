@@ -11,6 +11,13 @@ public class CountResultDuringTheGame {
     int idTakenCard;
     Card tempTakenCard;
 
+    public static int getCountOfTakenCards() {
+        return countOfTakenCards;
+    }
+    public static int getCountOfPoints() {
+        return countOfPoints;
+    }
+
     public List playingTheGame(List deckOfCards) {
         idTakenCard = actionWithDeck.takeCard(deckOfCards);
         tempTakenCard = (Card) deckOfCards.get(idTakenCard);

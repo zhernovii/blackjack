@@ -1,12 +1,14 @@
 package codeOfProgram.actions;
 
 import codeOfProgram.main.Card;
+import codeOfProgram.main.DeckOfCards;
 
 import java.util.List;
 
 public class ActionWithDeck {
     public int takeCard(List<Card> deck){
-        int getRandomCardId = (int) (Math.random()*36);
+        int getRandomCardId = (int) (Math.random()*deck.size());
+
         Card card = deck.get(getRandomCardId);
         return getRandomCardId;
     }

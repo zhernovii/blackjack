@@ -31,14 +31,14 @@ public class AskingForAction {
         Scanner scanner = new Scanner(System.in);
 //        CountResultDuringTheGame countResultDuringTheGame = new CountResultDuringTheGame();
         String tempVarOfTakingCard = scanner.next();
-        ResultGame resultGame = new ResultGame();
+//        ResultGameContinuing resultGameContinuing = new ResultGameContinuing();
         while (true) {
             if (tempVarOfTakingCard.equalsIgnoreCase("1")) {
                 new CountResultDuringTheGame().playingTheGame(deckOfCards);
+                new ResultGameContinuing().countResultGame(CountResultDuringTheGame.getCountOfPoints());
                 return deckOfCards;
             } else if (tempVarOfTakingCard.equals("2")) {
-//                resultGame.countResultGame();
-                System.exit(0);
+                new ResultGameFinishing().countResultGame(CountResultDuringTheGame.getCountOfPoints());
             } else {
                 System.out.println("You've entered wrong value. Try again");
                 tempVarOfTakingCard = scanner.next();
