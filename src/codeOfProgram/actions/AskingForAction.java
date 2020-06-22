@@ -34,7 +34,6 @@ public class AskingForAction {
                 System.out.print(Configurations.getWrongAnswer());
                 tempVarOfStartGame = scanner.next();
             }
-            return null;
         }
     }
 

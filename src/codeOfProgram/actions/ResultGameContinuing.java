@@ -10,7 +10,7 @@ public class ResultGameContinuing implements Result {
         WriteResultToFile writeResultToFile = new WriteResultToFile();
 
         if (countOfPoints > 21) {
-            System.out.println(Configurations.getLoseWithBiggerResult());
+            System.out.println(String.format(Configurations.getLoseWithBiggerResult(), CountResultDuringTheGame.getCountOfPoints()));
             writeResultToFile.saveResult(AskingForAction.getNickName(), String.valueOf(CountResultDuringTheGame.getCountOfPoints()));
 
             System.exit(0);

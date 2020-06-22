@@ -9,7 +9,7 @@ public class ResultGameFinishing implements Result {
     public void countResultGame(int countOfPoints) {
         WriteResultToFile writeResultToFile = new WriteResultToFile();
         if (countOfPoints < 18) {
-            System.out.println(Configurations.getLoseWithLessResult());
+            System.out.println(String.format(Configurations.getLoseWithLessResult(), CountResultDuringTheGame.getCountOfPoints()));
         } else {
             System.out.println(Configurations.getWinWithLessResult());
 

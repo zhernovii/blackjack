@@ -6,8 +6,7 @@ import java.util.List;
 
 public class ActionWithDeck {
     public int takeCard(List<Card> deck) {
-        int getRandomCardId = (int) (Math.random() * deck.size());
-        return getRandomCardId;
+        return (int) (Math.random() * deck.size());
     }
 
     public List deleteTakenCardFromDeck(List deckOfCards, int cardId) {
