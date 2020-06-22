@@ -8,7 +8,6 @@ public class ActionWithDeck {
     public int takeCard(List<Card> deck){
         int getRandomCardId = (int) (Math.random()*36);
         Card card = deck.get(getRandomCardId);
-        System.out.println(card.getCharacter()+" "+card.getSuit());
         return getRandomCardId;
     }
 

@@ -10,17 +10,26 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Configurations configurations = new Configurations();
         DeckOfCards deck = new DeckOfCards();
+        List deckOfCards = null;
 
-        List deckOfCards = deck.getDeckOfCards();
-        System.out.println(deckOfCards.size());
-
-        ActionWithDeck actionWithDeck = new ActionWithDeck();
         AskingForAction askingForAction = new AskingForAction();
+        deckOfCards = askingForAction.askingForStartGame(deckOfCards);
+        while (true){
+            deckOfCards = askingForAction.askingForTakingCard(deckOfCards);
+//            System.out.println("----------------------");
+//            System.out.println(deckOfCards.size());
+//            System.out.println("----------------------");
+        }
 
-        deckOfCards = askingForAction.askingForStartGame();
-        System.out.println(deckOfCards.size());
-        actionWithDeck.printDeck(deckOfCards);
 
-        System.out.println(deck.toString());
+
+
+
+
+//
+//        System.out.println(deckOfCards.size());
+//        actionWithDeck.printDeck(deckOfCards);
+//
+//        System.out.println(deck.toString());
     }
 }
