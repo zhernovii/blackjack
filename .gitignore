@@ -25,5 +25,3 @@ hs_err_pid*
 /21points.iml
 /src/codeOfProgram/resources/result.txt
 out/production/21points/META-INF/21points.kotlin_module
-out/production/21points/codeOfProgram/resources/result.txt
-src/codeOfProgram/resources/result.txt

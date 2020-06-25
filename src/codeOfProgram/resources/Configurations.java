@@ -1,4 +1,4 @@
-package codeOfProgram.main;
+package codeOfProgram.resources;
 
 import java.io.FileInputStream;
 import java.io.InputStreamReader;

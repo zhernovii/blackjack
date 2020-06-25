@@ -1,34 +1,22 @@
 package codeOfProgram.actions;
 
-import codeOfProgram.main.Configurations;
-import codeOfProgram.main.DeckOfCards;
-import codeOfProgram.main.WriteResultToFile;
+import codeOfProgram.resources.Configurations;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class AskingForAction {
-    private static String nickName;
-    public static String getNickName() {
-        return nickName;
-    }  //should be static
 
-    public List askingForStartGame (){
+    public void askingForStartGame (){
         WriteResultToFile writeResultToFile = new WriteResultToFile();
         System.out.print(Configurations.getAskForStartGame());
         Scanner scanner = new Scanner(System.in);
         String tempVarOfStartGame = scanner.next();
-
         while (true) {
             if (tempVarOfStartGame.equals(Configurations.getPositiveAnswer())) {
-                System.out.print(Configurations.getAskForEnterName());
-                nickName = scanner.next();
-                List deckOfCards = new DeckOfCards().getDeckOfCards();
-                new CountResultDuringTheGame().playingTheGame(deckOfCards);
-                return deckOfCards;
+                break;
             } else if (tempVarOfStartGame.equals(Configurations.getNegativeAnswer())) {
                 System.out.print(Configurations.getLoser());
-                writeResultToFile.saveResult(Configurations.getLoser(),Configurations.getLoser());
+                writeResultToFile.saveResult(Configurations.getLoser(),0);
                 System.exit(0);
             } else {
                 System.out.print(Configurations.getWrongAnswer());
@@ -37,21 +25,24 @@ public class AskingForAction {
         }
     }
 
-    public List askingForTakingCard (List deckOfCards){
+    public boolean askingForTakingCard (){
         System.out.println(Configurations.getAskForTakingOneMoreCard());
         Scanner scanner = new Scanner(System.in);
         String tempVarOfTakingCard = scanner.next();
         while (true) {
             if (tempVarOfTakingCard.equals(Configurations.getPositiveAnswer())) {
-                new CountResultDuringTheGame().playingTheGame(deckOfCards);
-                new ResultGameContinuing().countResultGame(CountResultDuringTheGame.getCountOfPoints());
-                return deckOfCards;
+                return true;
             } else if (tempVarOfTakingCard.equals(Configurations.getNegativeAnswer())) {
-                new ResultGameFinishing().countResultGame(CountResultDuringTheGame.getCountOfPoints());
+                return false;
             } else {
                 System.out.println(Configurations.getWrongAnswer());
                 tempVarOfTakingCard = scanner.next();
             }
         }
+    }
+    public String askingForNickname (){
+        System.out.print(Configurations.getAskForEnterName());
+        Scanner scanner = new Scanner(System.in);
+        return scanner.next();
     }
 }
