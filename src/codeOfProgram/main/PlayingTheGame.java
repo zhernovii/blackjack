@@ -4,23 +4,32 @@ import codeOfProgram.actions.AskingForAction;
 import codeOfProgram.resources.Configurations;
 
 public class PlayingTheGame {
-    private int countOfPoints = 0;
-    ResultGame resultGame = new ResultGame();
+    public void playingGame(String nickname) {
+        int countOfPoints = 0;
+        boolean endOfGame;
+        boolean takeNewCard=false;
 
-    public void playingGame() {
         AskingForAction askingForAction = new AskingForAction();
         askingForAction.askingForStartGame();
-        String nickname = askingForAction.askingForNickname();
+        if(nickname==null){
+            nickname = askingForAction.askingForNickname();
+        }
         DeckOfCards deckOfCards = new DeckOfCards();
+        ResultGame resultGame = new ResultGame();
 
         while (true) {
             Card card = deckOfCards.takeCard();
             countOfPoints += card.getValue();
             System.out.println(String.format(Configurations.getCounterResultDuringTheGame(), countOfPoints));
-            resultGame.countResultDuringTheGame(nickname, countOfPoints);
-            boolean takeNewCard = askingForAction.askingForTakingCard();
+            endOfGame = resultGame.countResultDuringTheGame(nickname, countOfPoints);
+            if (!endOfGame) {
+                takeNewCard = askingForAction.askingForTakingCard();
+            }
             if (!takeNewCard) {
-                resultGame.countResultAfterUserStop(nickname, countOfPoints);
+                endOfGame = resultGame.countResultAfterUserStop(nickname, countOfPoints);
+            }
+            if (endOfGame){
+                askingForAction.askingForNewGame(nickname);
             }
         }
     }

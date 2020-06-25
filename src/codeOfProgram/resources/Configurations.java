@@ -24,6 +24,7 @@ public class Configurations {
     private static String loseWithLessResult;
     private static String winWithExcellentResult;
     private static String winWithLessResult;
+    private static String askForStartNewGame;
 
     public static String getPathToOpenFile() {
         return pathToOpenFile;
@@ -76,6 +77,9 @@ public class Configurations {
     public static String getWinWithLessResult() {
         return winWithLessResult;
     }
+    public static String getAskForStartNewGame() {
+        return askForStartNewGame;
+    }
 
     public Configurations() throws Exception{
         Properties props = new Properties();
@@ -97,5 +101,6 @@ public class Configurations {
         loseWithLessResult = props.getProperty("loseWithLessResult");
         winWithExcellentResult = props.getProperty("winWithExcellentResult");
         winWithLessResult = props.getProperty("winWithLessResult");
+        askForStartNewGame = props.getProperty("askForStartNewGame");
     }
 }

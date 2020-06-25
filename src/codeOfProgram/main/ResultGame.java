@@ -5,7 +5,7 @@ import codeOfProgram.resources.Configurations;
 
 public class ResultGame {
 
-    public void countResultDuringTheGame(String nickname, int countOfPoints) {
+    public boolean countResultDuringTheGame(String nickname, int countOfPoints) {
         WriteResultToFile writeResultToFile = new WriteResultToFile();
         if (countOfPoints>=21){
             if (countOfPoints > 21) {
@@ -14,11 +14,12 @@ public class ResultGame {
                 System.out.println(String.format(Configurations.getWinWithExcellentResult(),countOfPoints));
             }
             writeResultToFile.saveResult(nickname, countOfPoints);
-            System.exit(0);
+            return true;
         }
+        return false;
     }
 
-    public void countResultAfterUserStop(String nickname, int countOfPoints) {
+    public boolean countResultAfterUserStop(String nickname, int countOfPoints) {
         WriteResultToFile writeResultToFile = new WriteResultToFile();
         if (countOfPoints < 18) {
             System.out.println(String.format(Configurations.getLoseWithLessResult(),countOfPoints));
@@ -26,6 +27,6 @@ public class ResultGame {
             System.out.println(String.format(Configurations.getWinWithLessResult(),countOfPoints));
         }
         writeResultToFile.saveResult(nickname, countOfPoints);
-        System.exit(0);
+        return true;
     }
 }
