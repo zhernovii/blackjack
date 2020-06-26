@@ -25,3 +25,7 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+*.xml
+/21points.iml
+/src/codeOfProgram/resources/result.txt
+out/production/21points/META-INF/21points.kotlin_module
