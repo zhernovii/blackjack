@@ -21,8 +21,8 @@ public class DeckOfCards {
 
     private List<Card> getDeckOfCards() {
         List<Card> deckOfCards = new ArrayList<>();
-        for (Card.EnumCharacters enumCharacters : Card.EnumCharacters.values()) {
-            for (Card.EnumSuits enumSuits : Card.EnumSuits.values()) {
+        for (EnumCharacters enumCharacters : EnumCharacters.values()) {
+            for (EnumSuits enumSuits : EnumSuits.values()) {
                 deckOfCards.add(new Card(enumCharacters.value, enumSuits, enumCharacters));
             }
         }
@@ -34,6 +34,5 @@ public class DeckOfCards {
             temp.printCard();
         }
     }
-
 }
 

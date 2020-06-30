@@ -9,6 +9,6 @@ public class Main {
 
         new Configurations();
 
-        new PlayingTheGame().playingGame(null);
+        new PlayingTheGame().playingGame();
     }
 }

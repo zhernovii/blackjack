@@ -6,11 +6,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class WriteResultToFile {
-    public void saveResult(String name, int result) {
+    public void saveResult(List<String> result) {
         try (FileWriter fileWriter = new FileWriter(Configurations.getPathToSaveFile(), true)) {
-            fileWriter.write(String.format(Configurations.getFinalResult(),name, result));
+            fileWriter.write(String.valueOf(result));
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern(Configurations.getDateFormat());
             LocalDateTime now = LocalDateTime.now();
             fileWriter.write(dtf.format(now));
